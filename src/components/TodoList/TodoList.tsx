@@ -10,6 +10,10 @@ const TodoList: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log(todos);
+  }, [todos]);
+
+  useEffect(() => {
     dispatch(fetchTodos());
   }, []);
 

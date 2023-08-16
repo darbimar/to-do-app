@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import bin from './../../assets/bin.svg';
 import pen from './../../assets/pen.svg';
 import styles from './TodoItem.module.scss';
-import { editTask } from '../../store/reducers/TodoSlice';
+import { editTask, removeTask } from '../../store/reducers/TodoSlice';
 
 const TodoItem: React.FC<ITodoItem> = ({ id, title }) => {
   const [taskValue, setTaskValue] = useState(title);
@@ -18,6 +18,10 @@ const TodoItem: React.FC<ITodoItem> = ({ id, title }) => {
       dispatch(editTask({ id, value: taskValue }));
     }
     setIsEditing(false);
+  };
+
+  const handleRemoveTask = (id: number) => {
+    dispatch(removeTask(id));
   };
 
   return (
@@ -36,7 +40,7 @@ const TodoItem: React.FC<ITodoItem> = ({ id, title }) => {
       <Button onClick={() => setIsEditing(true)}>
         <img src={pen} alt="Edit task" />
       </Button>
-      <Button onClick={() => console.log('delete')}>
+      <Button onClick={() => handleRemoveTask(id)}>
         <img src={bin} alt="Delete task" />
       </Button>
     </div>

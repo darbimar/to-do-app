@@ -39,10 +39,19 @@ export const todoSlice = createSlice({
         title: action.payload.value,
       };
     },
+    removeTask: (state, action) => {
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+    },
   },
 });
 
-export const { todosFetching, todosFetchingSuccess, todosFetchingError, addTask, editTask } =
-  todoSlice.actions;
+export const {
+  todosFetching,
+  todosFetchingSuccess,
+  todosFetchingError,
+  addTask,
+  editTask,
+  removeTask,
+} = todoSlice.actions;
 
 export default todoSlice.reducer;

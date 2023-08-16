@@ -3,11 +3,10 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import styles from './TaskInput.module.scss';
 import { addTask } from '../../store/reducers/TodoSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 import { ITodoItem } from '../../types/ITodoItem';
 
 const TaskInput: React.FC = () => {
-  const { todos } = useAppSelector((state) => state.todoReducer);
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
 
@@ -15,7 +14,7 @@ const TaskInput: React.FC = () => {
     if (value.trim() !== '') {
       const task: ITodoItem = {
         userId: 1,
-        id: todos.length + 1,
+        id: Math.floor(Math.random() * 900) + 100,
         title: value,
         completed: false,
       };
