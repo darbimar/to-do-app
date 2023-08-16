@@ -29,7 +29,13 @@ export const todoSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    addTask: (state, action: { payload: ITodoItem }) => {
+      state.todos.push(action.payload);
+    },
   },
 });
+
+export const { todosFetching, todosFetchingSuccess, todosFetchingError, addTask } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;

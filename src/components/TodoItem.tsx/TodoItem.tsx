@@ -11,10 +11,10 @@ const TodoItem: React.FC<ITodoItem> = ({ title }) => {
     <div className={styles.wrapper}>
       <Input type="checkbox" id="todo" />
       <label htmlFor="todo">{title}</label>
-      <Button>
+      <Button onClick={() => console.log('q')}>
         <img src={pen} alt="Edit task" />
       </Button>
-      <Button>
+      <Button onClick={() => console.log('q')}>
         <img src={bin} alt="Delete task" />
       </Button>
     </div>

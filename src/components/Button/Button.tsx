@@ -3,11 +3,15 @@ import styles from './Button.module.scss';
 
 type ButtonProps = {
   children: any;
-  handleCheck?: () => void;
+  onClick: () => void;
 };
 
-const Button: React.FC<ButtonProps> = ({ children }) => {
-  return <button className={styles.button}>{children}</button>;
+const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+  return (
+    <button className={styles.button} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
