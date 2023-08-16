@@ -6,8 +6,10 @@ import Main from './components/Main/Main';
 const App: React.FC = () => {
   return (
     <div className={styles.container}>
-      <Header />
-      <Main />
+      <div className={styles.content}>
+        <Header />
+        <Main />
+      </div>
     </div>
   );
 };
