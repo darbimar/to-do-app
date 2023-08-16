@@ -1,9 +1,10 @@
 import React, { ChangeEvent } from 'react';
 
 type InputProps = {
-  className: string;
+  className?: string;
   type: 'text' | 'checkbox';
-  value: string | number | undefined;
+  id?: string;
+  value?: string | number | undefined;
   placeholder?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };

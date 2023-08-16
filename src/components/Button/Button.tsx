@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-  children: string;
+  children: any;
   handleCheck?: () => void;
 };
 
