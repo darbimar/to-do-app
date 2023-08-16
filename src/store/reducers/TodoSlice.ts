@@ -32,10 +32,17 @@ export const todoSlice = createSlice({
     addTask: (state, action: { payload: ITodoItem }) => {
       state.todos.push(action.payload);
     },
+    editTask: (state, action: { payload: { id: number; value: string } }) => {
+      const index = state.todos.findIndex((todo) => todo.id === action.payload.id);
+      state.todos[index] = {
+        ...state.todos[index],
+        title: action.payload.value,
+      };
+    },
   },
 });
 
-export const { todosFetching, todosFetchingSuccess, todosFetchingError, addTask } =
+export const { todosFetching, todosFetchingSuccess, todosFetchingError, addTask, editTask } =
   todoSlice.actions;
 
 export default todoSlice.reducer;
