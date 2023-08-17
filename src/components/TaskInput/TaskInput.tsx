@@ -32,7 +32,9 @@ const TaskInput: React.FC = () => {
         value={value}
         onChange={(event) => setValue(event.target.value)}
       />
-      <Button onClick={handleAddTask}>Add</Button>
+      <Button isActive onClick={handleAddTask}>
+        Add
+      </Button>
     </section>
   );
 };
