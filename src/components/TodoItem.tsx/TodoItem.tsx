@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { editTask, removeTask, toggleTask } from '../../store/reducers/TodoSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { ITodoItem } from '../../types/ITodoItem';
 import Input from '../Input/Input';
@@ -6,7 +7,6 @@ import Button from '../Button/Button';
 import bin from './../../assets/bin.svg';
 import pen from './../../assets/pen.svg';
 import styles from './TodoItem.module.scss';
-import { editTask, removeTask, toggleTask } from '../../store/reducers/TodoSlice';
 
 const TodoItem: React.FC<ITodoItem> = ({ id, title, completed }) => {
   const [taskValue, setTaskValue] = useState(title);

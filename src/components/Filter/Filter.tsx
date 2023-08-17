@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Filter.module.scss';
 import Button from '../Button/Button';
+import styles from './Filter.module.scss';
 
 type FilterProps = {
   filter: string;

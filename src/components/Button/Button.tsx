@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
-  children: any;
+  children: string | React.ReactNode;
   onClick: () => void;
   isActive?: boolean;
 };

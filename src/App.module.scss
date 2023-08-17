@@ -10,7 +10,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 30px;
   padding: 20px 80px;
@@ -18,4 +17,18 @@
   height: 80vh;
   background-color: #fff;
   box-shadow: 0 4px 5px #00000066;
+  overflow-y: auto;
+
+  @media (max-width: 1024px) {
+    padding: 20px 45px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 0px;
+    width: 85%;
+  }
+
+  @media (max-width: 425px) {
+    width: 90%;
+  }
 }

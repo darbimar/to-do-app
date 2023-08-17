@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import styles from './TaskInput.module.scss';
 import { addTask } from '../../store/reducers/TodoSlice';
 import { useAppDispatch } from '../../hooks/redux';
 import { ITodoItem } from '../../types/ITodoItem';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+import styles from './TaskInput.module.scss';
 
 const TaskInput: React.FC = () => {
   const [value, setValue] = useState('');
