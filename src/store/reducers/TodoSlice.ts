@@ -3,14 +3,12 @@ import { ITodoItem } from '../../types/ITodoItem';
 
 interface TodoState {
   todos: ITodoItem[];
-  isLoading: boolean;
-  error: string;
+  status: string;
 }
 
 const initialState: TodoState = {
   todos: [],
-  isLoading: false,
-  error: '',
+  status: 'idle',
 };
 
 export const todoSlice = createSlice({
@@ -18,16 +16,14 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     todosFetching(state) {
-      state.isLoading = true;
+      state.status = 'loading';
     },
     todosFetchingSuccess(state, action: PayloadAction<ITodoItem[]>) {
-      state.isLoading = false;
-      state.error = '';
+      state.status = 'succeeded';
       state.todos = action.payload;
     },
-    todosFetchingError(state, action: PayloadAction<string>) {
-      state.isLoading = false;
-      state.error = action.payload;
+    todosFetchingError(state) {
+      state.status = 'failed';
     },
     addTask: (state, action: { payload: ITodoItem }) => {
       state.todos.push(action.payload);

@@ -6,16 +6,19 @@ import TodoItem from '../TodoItem.tsx/TodoItem';
 import Filter from '../Filter/Filter';
 import Button from '../Button/Button';
 import { clearTasks } from '../../store/reducers/TodoSlice';
+import Spinner from '../Spinner/Spinner';
 
 const TodoList: React.FC = () => {
-  const { todos } = useAppSelector((state) => state.todoReducer);
+  const { todos, status } = useAppSelector((state) => state.todoReducer);
   const [filter, setFilter] = useState('All');
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchTodos());
-  }, []);
+    if (status === 'idle') {
+      dispatch(fetchTodos());
+    }
+  }, [dispatch, status]);
 
   const clearCompletedTasks = () => {
     dispatch(clearTasks());
@@ -36,9 +39,9 @@ const TodoList: React.FC = () => {
   return (
     <section className={styles.list}>
       <Filter filter={filter} setFilter={setFilter} />
-      {filteredTodos.map((todo) => (
-        <TodoItem key={todo.id} {...todo} />
-      ))}
+      {status === 'loading' && <Spinner />}
+      {status === 'succeeded' && filteredTodos.map((todo) => <TodoItem key={todo.id} {...todo} />)}
+      {status === 'failed' && <div>Произошла ошибка при загрузке данных</div>}
       <Button onClick={clearCompletedTasks}>Clear all completed</Button>
     </section>
   );
