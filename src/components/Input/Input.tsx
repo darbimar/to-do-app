@@ -6,6 +6,7 @@ type InputProps = {
   id?: string;
   value?: string | number | undefined;
   placeholder?: string;
+  checked?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 };

@@ -42,6 +42,13 @@ export const todoSlice = createSlice({
     removeTask: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload);
     },
+    toggleTask: (state, action: { payload: { id: number; isCompleted: boolean } }) => {
+      const index = state.todos.findIndex((todo) => todo.id === action.payload.id);
+      state.todos[index] = {
+        ...state.todos[index],
+        completed: !action.payload.isCompleted,
+      };
+    },
   },
 });
 
@@ -52,6 +59,7 @@ export const {
   addTask,
   editTask,
   removeTask,
+  toggleTask,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;
