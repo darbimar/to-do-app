@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchTodos } from '../../store/reducers/ActionCreators';
 import TodoItem from '../TodoItem.tsx/TodoItem';
 import Filter from '../Filter/Filter';
+import Button from '../Button/Button';
+import { clearTasks } from '../../store/reducers/TodoSlice';
 
 const TodoList: React.FC = () => {
   const { todos } = useAppSelector((state) => state.todoReducer);
@@ -14,6 +16,10 @@ const TodoList: React.FC = () => {
   useEffect(() => {
     dispatch(fetchTodos());
   }, []);
+
+  const clearCompletedTasks = () => {
+    dispatch(clearTasks());
+  };
 
   const filterTodos = (filter: string) => {
     if (filter === 'Active') {
@@ -33,6 +39,7 @@ const TodoList: React.FC = () => {
       {filteredTodos.map((todo) => (
         <TodoItem key={todo.id} {...todo} />
       ))}
+      <Button onClick={clearCompletedTasks}>Clear all completed</Button>
     </section>
   );
 };

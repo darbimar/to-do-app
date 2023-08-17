@@ -49,6 +49,9 @@ export const todoSlice = createSlice({
         completed: !action.payload.isCompleted,
       };
     },
+    clearTasks: (state) => {
+      state.todos = state.todos.filter((todo) => !todo.completed);
+    },
   },
 });
 
@@ -60,6 +63,7 @@ export const {
   editTask,
   removeTask,
   toggleTask,
+  clearTasks,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;
